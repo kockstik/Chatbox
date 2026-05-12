@@ -46,6 +46,9 @@ class Subbutton: UIButton {
         leftPartLoginLabel.text = label
         rightPartLoginLabel.text = accentLabel
         
+        self.isUserInteractionEnabled = true
+        loginLabelsHstack.isUserInteractionEnabled = false
+        
         NSLayoutConstraint.activate([
             loginLabelsHstack.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             loginLabelsHstack.centerYAnchor.constraint(equalTo: self.centerYAnchor),

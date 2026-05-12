@@ -5,9 +5,9 @@
 //  Created by admin on 12.05.2026.
 //
 
+import UIKit
+
 class OnboardingRouter: IOnboardingRouter {
-    static var shared = OnboardingRouter()
-    
     weak var presenter: IOnboardingPresenter?
     
     private init(presenter: IOnboardingPresenter? = nil){
@@ -15,14 +15,18 @@ class OnboardingRouter: IOnboardingRouter {
     }
     
     func login() {
-        
+        print("login")
+        let loginView = LoginRouter.build()
+        if let view = presenter?.view as? UIViewController {
+            view.navigationController?.pushViewController(loginView, animated: true)
+        }
     }
     
     func signup() {
-        
+        print("signup")
     }
     
-    static func build() -> OnboardingView {
+    static func build() -> UIViewController {
         let view = OnboardingView()
         let presenter = OnboardingPresenter(view: view)
         let router = OnboardingRouter(presenter: presenter)

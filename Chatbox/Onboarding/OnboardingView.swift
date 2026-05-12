@@ -166,6 +166,8 @@ class OnboardingView: UIViewController, IOnboardingView {
             
             loginBtn.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             loginBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: hPadding),
+            loginBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -hPadding),
         ])
     }
 }
