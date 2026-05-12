@@ -9,6 +9,8 @@ import UIKit
 
 class Button: UIButton{
     
+    var action: (() -> Void)?
+    
     lazy var label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -25,6 +27,8 @@ class Button: UIButton{
         self.clipsToBounds = true
         self.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: 48)
         self.addSubview(label)
+        
+        self.addAction(UIAction(handler: {[weak self] _ in self?.action?() }), for: .touchUpInside)
         
         label.text = text
         

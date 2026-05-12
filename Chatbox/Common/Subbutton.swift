@@ -9,6 +9,8 @@ import UIKit
 
 class Subbutton: UIButton {
     
+    var action: (() -> Void)?
+    
     lazy var loginLabelsHstack: UIStackView = {
         let uiStackView = UIStackView()
         uiStackView.axis = .horizontal
@@ -40,6 +42,7 @@ class Subbutton: UIButton {
         
         self.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(loginLabelsHstack)
+        self.addAction(UIAction(handler: {[weak self] _ in self?.action?() }), for: .touchUpInside)
         leftPartLoginLabel.text = label
         rightPartLoginLabel.text = accentLabel
         
