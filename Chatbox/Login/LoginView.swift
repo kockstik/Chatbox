@@ -52,6 +52,7 @@ class LoginView: UIViewController, ILoginView {
     //MARK: - Buttons
     var button = Button(text: "Log in", type: .accent)
     var forgotPswButton = Subbutton(label: "Forgot password?")
+    var backButton = BackButton()
     
     override func viewDidLoad() {
         setupDismissKeyboardOnTap()
@@ -69,6 +70,10 @@ class LoginView: UIViewController, ILoginView {
         
         view.addSubview(button)
         view.addSubview(forgotPswButton)
+        view.addSubview(backButton)
+        backButton.action = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
         
         setupConstraints()
     }
@@ -103,6 +108,9 @@ class LoginView: UIViewController, ILoginView {
             button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -hPadding),
             forgotPswButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             forgotPswButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            backButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
+            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
         ])
     }
 }
