@@ -8,7 +8,9 @@
 import UIKit
 import Foundation
 
-class OnboardingView: UIViewController {
+class OnboardingView: UIViewController, IOnboardingView {
+    
+    var presenter: IOnboardingPresenter? = nil
     
     let hPadding = CGFloat(24)
     
@@ -167,4 +169,8 @@ class OnboardingView: UIViewController {
             loginBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
     }
+}
+
+protocol IOnboardingView: AnyObject {
+    var presenter: IOnboardingPresenter? { get set }
 }
