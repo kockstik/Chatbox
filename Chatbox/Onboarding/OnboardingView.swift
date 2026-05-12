@@ -74,10 +74,21 @@ class OnboardingView: UIViewController {
     lazy var subtitleText: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 16, weight: .medium)
         label.textColor = .lightGray
-        label.text = "Our chat app is the perfect way to stay connected with friends and family."
         label.numberOfLines = 0
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.minimumLineHeight = 26
+        paragraphStyle.maximumLineHeight = 26
+        let attributedText = NSAttributedString(
+            string: "Our chat app is the perfect way to stay connected with friends and family.",
+            attributes: [
+                .paragraphStyle: paragraphStyle,
+                .font: UIFont.systemFont(ofSize: 16, weight: .medium)
+            ]
+        )
+        label.attributedText = attributedText
+        
         return label
     }()
     
@@ -147,7 +158,7 @@ class OnboardingView: UIViewController {
             divider.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: hPadding),
             divider.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -hPadding),
             
-            signUpBtn.bottomAnchor.constraint(equalTo: loginBtn.topAnchor, constant: -46),
+            signUpBtn.bottomAnchor.constraint(equalTo: loginBtn.topAnchor, constant: -40),
             signUpBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             signUpBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: hPadding),
             signUpBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -hPadding),
