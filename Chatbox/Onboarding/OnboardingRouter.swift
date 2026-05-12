@@ -15,7 +15,6 @@ class OnboardingRouter: IOnboardingRouter {
     }
     
     func login() {
-        print("login")
         let loginView = LoginRouter.build()
         if let view = presenter?.view as? UIViewController {
             view.navigationController?.pushViewController(loginView, animated: true)
@@ -23,7 +22,7 @@ class OnboardingRouter: IOnboardingRouter {
     }
     
     func signup() {
-        print("signup")
+        
     }
     
     static func build() -> UIViewController {
