@@ -33,10 +33,16 @@ class DividerOR: UIView {
     fileprivate var leftStick = StickDivider()
     fileprivate var rightStick = StickDivider()
     
-    init() {
+    init(isDark: Bool = false) {
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(hStack)
+        
+        if isDark {
+            leftStick.stick.backgroundColor = .lightGray
+            rightStick.stick.backgroundColor = .lightGray
+            labelDivider.textColor = .systemGray
+        }
         
         NSLayoutConstraint.activate([
             hStack.leadingAnchor.constraint(equalTo: self.leadingAnchor),

@@ -18,13 +18,17 @@ class SocialButton: UIButton{
         return imageView
     }()
     
-    init(icon: UIImage){
+    init(icon: UIImage, isDark: Bool = false){
         super.init(frame: .zero)
         
         self.translatesAutoresizingMaskIntoConstraints = false
         self.layer.cornerRadius = size / 2
         self.layer.borderColor = UIColor.lightGray.cgColor
         self.layer.borderWidth = 1
+        
+        if isDark {
+            self.layer.borderColor = UIColor.black.cgColor
+        }
         
         image.image = icon
         
