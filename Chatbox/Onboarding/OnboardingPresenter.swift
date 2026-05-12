@@ -16,6 +16,10 @@ class OnboardingPresenter: IOnboardingPresenter {
     func didSignUpTap() {
         router?.signup()
     }
+    
+    func didLogInTap() {
+        router?.login()
+    }
 }
 
 protocol IOnboardingPresenter: AnyObject {
@@ -23,4 +27,5 @@ protocol IOnboardingPresenter: AnyObject {
     var router: IOnboardingRouter? { get set }
     
     func didSignUpTap()
+    func didLogInTap()
 }

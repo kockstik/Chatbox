@@ -102,6 +102,8 @@ class OnboardingView: UIViewController, IOnboardingView {
 
     
     override func viewDidLoad() {
+        navigationController?.navigationBar.isHidden = true
+        
         view.addSubview(ellipse)
         
         view.addSubview(logoHstack)
@@ -116,13 +118,10 @@ class OnboardingView: UIViewController, IOnboardingView {
         
         view.addSubview(signUpBtn)
         view.addSubview(loginBtn)
+        signUpBtn.action = presenter?.didSignUpTap
+        loginBtn.action = presenter?.didLogInTap
         
-        setupNavigation()
         setupConstraints()
-    }
-    
-    private func setupNavigation(){
-        navigationController?.navigationBar.isHidden = true
     }
     
     private func setupConstraints() {
