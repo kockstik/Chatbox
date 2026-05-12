@@ -46,6 +46,11 @@ class Subbutton: UIButton {
         leftPartLoginLabel.text = label
         rightPartLoginLabel.text = accentLabel
         
+        if accentLabel.isEmpty {
+            leftPartLoginLabel.textColor = .accent
+            leftPartLoginLabel.font = .systemFont(ofSize: 14, weight: .medium)
+        }
+        
         self.isUserInteractionEnabled = true
         loginLabelsHstack.isUserInteractionEnabled = false
         
