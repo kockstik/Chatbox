@@ -14,12 +14,19 @@ class LoginView: UIViewController, ILoginView {
     var presenter: ILoginPresenter?
     
     //MARK: - Text
-    lazy var titleLabel: UILabel = {
+    lazy var titleLabel: UnderlinedLabel = {
+        let undetlinedLabel = UILabel()
+        undetlinedLabel.translatesAutoresizingMaskIntoConstraints = false
+        undetlinedLabel.text = "Log in"
+        undetlinedLabel.setupSmallTitle()
+        
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Log in to Chatbox"
+        label.text = " to Chatbox"
         label.setupSmallTitle()
-        return label
+        
+        let uLabel = UnderlinedLabel(underlinedLabel: undetlinedLabel, label: label)
+        return uLabel
     }()
     
     lazy var textLabel: UILabel = {
