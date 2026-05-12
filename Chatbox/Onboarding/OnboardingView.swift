@@ -81,68 +81,12 @@ class OnboardingView: UIViewController {
         return label
     }()
     
-    //MARK: - Divider
-    var divider = DividerOR()
-    
-    //MARK: - Socials
+    //MARK: - Buttons
     var socialsView = SocialsView()
-    
-    //MARK: - Login
-    lazy var loginBtn: UIButton = {
-        let uiButton = UIButton()
-        uiButton.translatesAutoresizingMaskIntoConstraints = false
-        uiButton.addSubview(loginLabelsHstack)
-        return uiButton
-    }()
-    
-    lazy var loginLabelsHstack: UIStackView = {
-        let uiStackView = UIStackView()
-        uiStackView.axis = .horizontal
-        uiStackView.translatesAutoresizingMaskIntoConstraints = false
-        uiStackView.addArrangedSubview(leftPartLoginLabel)
-        uiStackView.addArrangedSubview(rightPartLoginLabel)
-        uiStackView.alignment = .center
-        return uiStackView
-    }()
-    
-    lazy var leftPartLoginLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 14, weight: .medium)
-        label.textColor = .lightGray
-        label.text = "Existing account? "
-        return label
-    }()
-    
-    lazy var rightPartLoginLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 14, weight: .bold)
-        label.textColor = .white
-        label.text = "Log in"
-        return label
-    }()
-    
-    //MARK: - Sign up
-    lazy var signUpBtn: UIButton = {
-        let uiButton = UIButton()
-        uiButton.translatesAutoresizingMaskIntoConstraints = false
-        uiButton.backgroundColor = .white
-        uiButton.layer.cornerRadius = 16
-        uiButton.clipsToBounds = true
-        uiButton.frame = CGRect(x: 0, y: 0, width: uiButton.frame.width, height: 48)
-        uiButton.addSubview(signUpLabel)
-        return uiButton
-    }()
-    
-    lazy var signUpLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Sign up with mail"
-        label.font = .systemFont(ofSize: 16, weight: .medium)
-        label.textColor = .black
-        return label
-    }()
+    var divider = DividerOR()
+    var signUpBtn = Button(text: "Sign up with mail")
+    var loginBtn = Subbutton(label: "Existing account? ", accentLabel: "Log in")
+
     
     override func viewDidLoad() {
         view.addSubview(ellipse)
@@ -207,14 +151,9 @@ class OnboardingView: UIViewController {
             signUpBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             signUpBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: hPadding),
             signUpBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -hPadding),
-            signUpBtn.heightAnchor.constraint(equalToConstant: signUpBtn.frame.height),
-            signUpLabel.centerXAnchor.constraint(equalTo: signUpBtn.centerXAnchor),
-            signUpLabel.centerYAnchor.constraint(equalTo: signUpBtn.centerYAnchor),
             
             loginBtn.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             loginBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loginLabelsHstack.centerXAnchor.constraint(equalTo: loginBtn.centerXAnchor),
-            loginLabelsHstack.centerYAnchor.constraint(equalTo: loginBtn.centerYAnchor),
         ])
     }
 }
