@@ -22,7 +22,10 @@ class OnboardingRouter: IOnboardingRouter {
     }
     
     func signup() {
-        
+        let signupView = SignupRouter.build()
+        if let view = presenter?.view as? UIViewController {
+            view.navigationController?.pushViewController(signupView, animated: true)
+        }
     }
     
     static func build() -> UIViewController {
