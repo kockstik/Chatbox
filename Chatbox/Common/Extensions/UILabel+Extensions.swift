@@ -8,9 +8,20 @@
 import UIKit
 
 extension UILabel {
-    func setupSmallTitle(color: UIColor? = .black){
+    func setupSmallTitle(color: UIColor = .black){
         self.font = .systemFont(ofSize: 18, weight: .bold)
         self.textColor = color
+    }
+    
+    func setupMediumTitle(color: UIColor = .black){
+        self.font = .systemFont(ofSize: 20, weight: .medium)
+        self.textColor = color
+    }
+    
+    func setupInfoText(color: UIColor = .systemGray2){
+        self.font = .systemFont(ofSize: 12)
+        self.textColor = color
+        self.numberOfLines = 1
     }
     
     func setLineHeight(height: CGFloat){
