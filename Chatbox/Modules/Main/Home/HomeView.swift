@@ -19,9 +19,9 @@ class HomeView: UIViewController, IHomeView {
         }
     }
     
-    var topBar = TopBarView()
+    var topBar = TopBarView(title: "Home")
     var stories = StoriesView()
-    var chats = ChatsView()
+    var chats = ChatsTableView()
     
     override func viewDidLoad() {
         navigationController?.navigationBar.isHidden = true
@@ -37,7 +37,6 @@ class HomeView: UIViewController, IHomeView {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print(topHeight)
         chatsTopConstraint.constant = topHeight
     }
     
@@ -52,7 +51,6 @@ class HomeView: UIViewController, IHomeView {
             stories.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             stories.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            //chats.topAnchor.constraint(lessThanOrEqualTo: stories.bottomAnchor, constant: 30),
             chatsTopConstraint,
             chats.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             chats.trailingAnchor.constraint(equalTo: view.trailingAnchor),

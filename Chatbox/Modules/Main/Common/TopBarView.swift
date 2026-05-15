@@ -9,27 +9,37 @@ import UIKit
 
 class TopBarView: UIView {
     
-    var searchButton = SearchButton()
+    var delegate: TopBarSearchDelegate?
+    var searchButton = CircleButton(image: .search)
     
     lazy var label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.setupMediumTitle(color: .white)
-        label.text = "Home"
         return label
     }()
     
-    var avatar = Avatar(img: .me, size: 44)
+    var rightButton: UIView
     
-    init() {
+    init(title: String, rightButton: UIView) {
+        self.rightButton = rightButton
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         
         self.addSubview(searchButton)
+        searchButton.action = { [weak self] in
+            self?.delegate?.searchButtonTapped()
+        }
         self.addSubview(label)
-        self.addSubview(avatar)
+        self.addSubview(rightButton)
+        
+        label.text = title
         
         setupConstraints()
+    }
+    
+    convenience init(title: String){
+        self.init(title: title, rightButton: Avatar(img: .me, size: 44))
     }
     
     private func setupConstraints() {
@@ -41,13 +51,18 @@ class TopBarView: UIView {
             label.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             label.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             
-            avatar.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            avatar.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            avatar.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            rightButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            rightButton.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            rightButton.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+protocol TopBarSearchDelegate {
+    func searchButtonTapped()
+    func searchTextDidChange(_ text: String)
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchButton: UIButton {
+class CircleButton: UIButton {
     
     private let size = CGFloat(44)
     var action: (() -> Void)?
@@ -20,13 +20,17 @@ class SearchButton: UIButton {
         return imageView
     }()
     
-    init(){
+    init(image: UIImage, border: UIColor = .darkGray, background: UIColor? = nil){
         super.init(frame: .zero)
         self.addAction(UIAction(handler: {[weak self] _ in self?.action?() }), for: .touchUpInside)
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.layer.borderColor = UIColor.darkGray.cgColor
+        self.layer.borderColor = border.cgColor
         self.layer.borderWidth = 1
         self.layer.cornerRadius = size / 2
+        uiImageView.image = image
+        if background != nil {
+            self.backgroundColor = background
+        }
         
         self.addAction(UIAction(handler: {[weak self] _ in self?.action?() }), for: .touchUpInside)
         self.addSubview(uiImageView)
