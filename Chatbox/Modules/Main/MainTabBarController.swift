@@ -24,7 +24,7 @@ class MainTabBarController: UITabBarController {
         let homeView = HomeRouter.build()
         homeView.tabBarItem = UITabBarItem(title: "Message", image: .message, tag: 0)
         homeView.tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
-        let callsView = CallsView()
+        let callsView = CallsRouter.build()
         callsView.tabBarItem = UITabBarItem(title: "Calls", image: .call, tag: 1)
         callsView.tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         let contactsView = ContactsView()
