@@ -24,4 +24,17 @@ enum TypeCall {
             }
         }
     }
+    
+    var color: UIColor {
+        get{
+            switch(self){
+            case .outgoing:
+                return .systemPurple
+            case .incoming:
+                return .accent
+            case .missed:
+                return .red
+            }
+        }
+    }
 }
